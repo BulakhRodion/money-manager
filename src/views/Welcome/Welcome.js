@@ -1,21 +1,53 @@
-import React from 'react';
-import {ImgPreview} from "@assets/images/images";
+import React, {useState} from 'react';
+import {
+    ColumnHalf,
+    FlexAlignCenter,
+    FormContainer,
+    FormTitle,
+    FormText,
+    FormLink,
+    WelcomeSubtitle,
+    WelcomeTitle,
+    WelcomeUI
+} from "./Welcome.styles";
+import RegisterForm from "../Login/RegisterForm/RegisterForm";
 import LoginForm from "../Login/LoginForm/LoginForm";
+
 
 
 function Welcome() {
 
+    const [isRegistered, setIsRegistered] = useState(false);
+
+    const switchForms =() => {
+        setIsRegistered(!isRegistered);
+    }
+
     return (
-        <div>
-            <div>
-                <h1> Fast <span> & </span> Digital</h1>
-                <h3>solution to manage your finances</h3>
-            </div>
-            <div>
-                <LoginForm />
-            </div>
-            <img src={ImgPreview} alt="Income Notes Preview"/>
-        </div>
+        <WelcomeUI>
+            <FlexAlignCenter>
+                <ColumnHalf>
+                {/* TODO: add text animation and background with image*/}
+                    <WelcomeTitle> Fast <span> & </span> Digital</WelcomeTitle>
+                    <WelcomeSubtitle>solution to manage your finances</WelcomeSubtitle>
+                </ColumnHalf>
+                <ColumnHalf>
+                    <FormContainer>
+                        {isRegistered ? <FormTitle>Create Account</FormTitle> : <FormTitle>Hello again!</FormTitle>  }
+                        {isRegistered ?
+                            <FormText>
+                                Already have an account? <FormLink onClick={switchForms}>Sign in</FormLink>
+                            </FormText>
+                            :
+                            <FormText>
+                                Still not registered? <FormLink onClick={switchForms}>Sign up</FormLink>
+                            </FormText>
+                        }
+                        {isRegistered ?  <RegisterForm/> : <LoginForm/>}
+                    </FormContainer>
+                </ColumnHalf>
+            </FlexAlignCenter>
+        </WelcomeUI>
     );
 }
 

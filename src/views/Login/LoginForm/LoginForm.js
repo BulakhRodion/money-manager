@@ -1,22 +1,28 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../../firebase';
-// import { useNavigate } from 'react-router-dom'; //TODO: use this to redirect to home page after login
+import {FormContainer} from "./LoginForm.styles";
+import { useNavigate } from 'react-router-dom';
+import {AuthContext} from "../../../context/AuthContext";
+import InputField from "@components/common/InputField/InputField";
+import Button from "@components/common/Button/Button";
 
 function LoginForm() {
     const [inputError, setInputError] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    // const navigateAfterLogin = useNavigate() //TODO: use this to redirect to home page after login
+    const navigateUser = useNavigate()
+
+    const {dispatch} = useContext(AuthContext)
 
     const handleLogin = (e) => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user)
-                // navigateAfterLogin('/') //TODO: use this to redirect to home page after login
+                dispatch({type: 'LOGIN', payload: user})
+                navigateUser('/')
             })
             .catch((error) => {
                 setInputError(true);
@@ -25,23 +31,22 @@ function LoginForm() {
     }
 
     return (
-        <form onSubmit={handleLogin}>
-            <div className="form-group">
-                <label htmlFor="exampleInputEmail1">Email address</label>
-                <input type="email" className="form-control"
-                       id="exampleInputEmail1" aria-describedby="emailHelp"
-                       placeholder="Enter email" onChange={e=> setEmail(e.target.value)}/>
-                <small id="emailHelp" className="form-text text-muted">This is a test project, please do not use your real data.</small>
-            </div>
-            <div className="form-group">
-                <label htmlFor="exampleInputPassword1">Password</label>
-                <input type="password" className="form-control"
-                       id="exampleInputPassword1" placeholder="Password"
-                       onChange={e=> setPassword(e.target.value)}/>
-            </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+        <FormContainer onSubmit={handleLogin}>
+            <InputField
+                id="loginEmail"
+                type="email"
+                placeholder="E-mail"
+                value={email}
+                onChange={e => setEmail(e.target.value)}/>
+            <InputField
+                id="loginPassword"
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={e => setPassword(e.target.value)} />
+            <Button type="submit" className="btn btn-primary">Submit</Button>
             {inputError && <div className="alert alert-danger">Login details are incorrect</div>}
-        </form>
+        </FormContainer>
     );
 }
 

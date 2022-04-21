@@ -12,6 +12,8 @@ import IconSaving from './saving-money.png';
 import IconSkills from './skills.png'
 import IconResponsibility from './social-responsibility.png'
 import IconWallet from './wallet.png'
+import IconEmail from './email.svg'
+import IconPassword from './password.svg'
 
 export {
     IconBudget,
@@ -27,5 +29,7 @@ export {
     IconSaving,
     IconSkills,
     IconResponsibility,
-    IconWallet
+    IconWallet,
+    IconEmail,
+    IconPassword
 }
