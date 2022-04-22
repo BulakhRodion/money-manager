@@ -1,11 +1,14 @@
 import React from 'react';
 import { IconWallet } from '@assets/icons/icons.js';
+import {LogoImg, LogoLink} from "./Logo.styles";
 
 function Logo() {
     return (
         <div>
-            <img src={IconWallet} alt="icon" />
-            <h2>My Wallet</h2>
+            <LogoLink href="/">
+                <LogoImg src={IconWallet} alt="icon" />
+                Wallet
+            </LogoLink>
         </div>
     );
 }

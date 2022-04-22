@@ -31,3 +31,32 @@ export const LOGIN_INPUTS = [
         placeholder: 'Password',
     }
 ];
+
+export const NAVIGATION_ITEMS = [
+    {
+        id: 'dashboard',
+        name: 'Dashboard',
+        isActive: true,
+        path: '/',
+    },{
+        id: 'myCards',
+        name: 'My Cards',
+        isActive: false,
+        path: '/cards',
+    },{
+        id: 'saving',
+        name: 'Saving',
+        isActive: false,
+        path: '/saving',
+    },{
+        id: 'transactions',
+        name: 'Transaction',
+        isActive: false,
+        path: '/transactions',
+    },{
+        id: 'settings',
+        name: 'Settings',
+        isActive: false,
+        path: '/settings'
+    }
+];
