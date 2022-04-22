@@ -6,66 +6,69 @@ import {FormContainer} from "./RegisterForm.styles";
 import InputField from "@components/common/InputField/InputField";
 import {AuthContext} from "../../../context/AuthContext";
 import Button from "@components/common/Button/Button";
+import {REGISTER_INPUTS} from "../../../utils/helpers/constants";
+import {showToast} from "../../../utils/helpers/showToast";
 
 
 function RegisterForm() {
-    const [inputError, setInputError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+    const [list, setList] = useState([]);
+    let propsContainer = null
+
+    const [formValues, setFormValues] = useState({
+        email: '',
+        password: '',
+        confirmPassword: '',
+    });
 
     const navigateUser = useNavigate()
 
     const {dispatch} = useContext(AuthContext)
 
+    const inputs = [...REGISTER_INPUTS]
+
     const handleRegister = (e) => {
         e.preventDefault();
-        setInputError(false);
 
-        if (password !== confirmPassword) {
-            setInputError(true);
-            setErrorMessage('Passwords do not match');
+        if (formValues.password !== formValues.confirmPassword) {
+            showToast('error', list, setList, propsContainer, "Passwords do not match")
             return;
         }
 
-        createUserWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword(auth, formValues.email, formValues.password)
             .then((userCredential) => {
                 const user = userCredential.user;
                 dispatch({type: 'LOGIN', payload: user})
                 navigateUser('/')
+                showToast('success', list, setList, propsContainer, "Successfully registered!")
+                // TODO: MOVE TOAST TO DASHBOARD
             })
             .catch((error) => {
+                console.log(error)
                 if(error.code === 'auth/email-already-in-use') {
-                    setErrorMessage('Email already in use')
+                    showToast('error', list, setList, propsContainer, "Email already in use")
+                } else {
+                    showToast('error', list, setList, propsContainer, "Something went wrong")
                 }
-                setInputError(true);
             });
+    }
+
+    const handleOnChange = (e) => {
+        setFormValues({
+            ...formValues,
+            [e.target.name]: e.target.value
+        })
     }
 
     return (
         <FormContainer onSubmit={handleRegister}>
-            <InputField
-                id="registerEmail"
-                type="email"
-                placeholder="E-mail"
-                value={email}
-                onChange={e => setEmail(e.target.value)}/>
-            <InputField
-                id="registerPassword"
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={e => setPassword(e.target.value)} />
-            <InputField
-                id="confirmPassword"
-                type="password"
-                placeholder="Confirm Password"
-                value={confirmPassword}
-                onChange={e => setConfirmPassword(e.target.value)} />
+            {
+            inputs.map((input) => (
+                <InputField
+                    key={input.id} {...input} value={formValues[input.name]} onChange={handleOnChange}
+                />
+            ))
+            }
             <Button type="submit">Submit</Button>
-            {inputError && <div className="alert alert-danger">{errorMessage}</div>}
-            {/*//TODO: add error component*/}
         </FormContainer>
     );
 }

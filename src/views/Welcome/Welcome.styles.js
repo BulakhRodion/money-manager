@@ -45,7 +45,7 @@ export const ColumnHalf = styled.div`
     position: relative;
     justify-content: flex-start;
     background: rgb(255,255,255);
-    background: linear-gradient(133deg, rgba(255,255,255,1) 16%, rgba(16,145,228,1) 40%, rgba(101,24,215,0.8911939775910365) 62%, rgba(165,59,217,0.9836309523809523) 80%, rgba(179,40,213,0.9836309523809523) 93%);
+    background: linear-gradient(133deg, rgba(255,255,255,1) 6%, rgba(16,145,228,1) 40%, rgba(101,24,215,0.8911939775910365) 62%, rgba(165,59,217,0.9836309523809523) 80%, rgba(179,40,213,0.9836309523809523) 93%);
   }
 `;
 

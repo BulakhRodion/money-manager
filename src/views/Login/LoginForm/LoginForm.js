@@ -6,9 +6,14 @@ import { useNavigate } from 'react-router-dom';
 import {AuthContext} from "../../../context/AuthContext";
 import InputField from "@components/common/InputField/InputField";
 import Button from "@components/common/Button/Button";
+import {LOGIN_INPUTS} from "../../../utils/helpers/constants";
+import Toast from "../../../components/common/Toast/Toast";
+import {showToast} from "../../../utils/helpers/showToast";
 
 function LoginForm() {
-    const [inputError, setInputError] = useState(false);
+    const [list, setList] = useState([]);
+    let propsContainer = null
+
     const [formValues, setFormValues] = useState({
         email: '',
         password: ''
@@ -18,21 +23,7 @@ function LoginForm() {
 
     const {dispatch} = useContext(AuthContext)
 
-    const inputs = [
-    {
-        id: 'loginEmail',
-        name: 'email',
-        type: 'email',
-        placeholder: 'E-mail',
-        value: formValues.email,
-    }, {
-        id: 'loginPassword',
-        name: 'password',
-        type: 'password',
-        placeholder: 'Password',
-        value: formValues.password,
-    }
-    ];
+    const inputs = [...LOGIN_INPUTS]
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -41,10 +32,12 @@ function LoginForm() {
                 const user = userCredential.user;
                 dispatch({type: 'LOGIN', payload: user})
                 navigateUser('/')
+                showToast('success', list, setList, propsContainer, "Successfully logged in")
+                // TODO: MOVE TOAST TO DASHBOARD
             })
             .catch((error) => {
-                setInputError(true);
-                console.log(error.message)
+                console.log(error);
+                showToast('error', list, setList, propsContainer, "Invalid email or password")
             });
     }
 
@@ -64,21 +57,8 @@ function LoginForm() {
                     />
                 ))
             }
-
-            {/*<InputField*/}
-            {/*    id="loginEmail"*/}
-            {/*    type="email"*/}
-            {/*    placeholder="E-mail"*/}
-            {/*    value={formValues.email}*/}
-            {/*    onChange={e => setFormValues(e.target.value)}/>*/}
-            {/*<InputField*/}
-            {/*    id="loginPassword"*/}
-            {/*    type="password"*/}
-            {/*    placeholder="Password"*/}
-            {/*    value={formValues.password}*/}
-            {/*    onChange={e => setFormValues(e.target.value)} />*/}
             <Button type="submit">Submit</Button>
-            {inputError && <div className="alert alert-danger">Login details are incorrect</div>}
+            <Toast toastList={list}/>
         </FormContainer>
     );
 }
