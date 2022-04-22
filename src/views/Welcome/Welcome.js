@@ -8,10 +8,11 @@ import {
     FormLink,
     WelcomeSubtitle,
     WelcomeTitle,
-    WelcomeUI
+    WelcomeUI, MainImg
 } from "./Welcome.styles";
 import RegisterForm from "../Login/RegisterForm/RegisterForm";
 import LoginForm from "../Login/LoginForm/LoginForm";
+import {ImgWelcome} from "../../assets/images/images";
 
 
 
@@ -30,6 +31,7 @@ function Welcome() {
                 {/* TODO: add text animation and background with image*/}
                     <WelcomeTitle> Fast <span> & </span> Digital</WelcomeTitle>
                     <WelcomeSubtitle>solution to manage your finances</WelcomeSubtitle>
+                    <MainImg src={ImgWelcome} alt="Welcome to our site!"/>
                 </ColumnHalf>
                 <ColumnHalf>
                     <FormContainer>

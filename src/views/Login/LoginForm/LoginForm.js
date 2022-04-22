@@ -9,16 +9,34 @@ import Button from "@components/common/Button/Button";
 
 function LoginForm() {
     const [inputError, setInputError] = useState(false);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [formValues, setFormValues] = useState({
+        email: '',
+        password: ''
+    });
 
     const navigateUser = useNavigate()
 
     const {dispatch} = useContext(AuthContext)
 
+    const inputs = [
+    {
+        id: 'loginEmail',
+        name: 'email',
+        type: 'email',
+        placeholder: 'E-mail',
+        value: formValues.email,
+    }, {
+        id: 'loginPassword',
+        name: 'password',
+        type: 'password',
+        placeholder: 'Password',
+        value: formValues.password,
+    }
+    ];
+
     const handleLogin = (e) => {
         e.preventDefault();
-        signInWithEmailAndPassword(auth, email, password)
+        signInWithEmailAndPassword(auth, formValues.email, formValues.password)
             .then((userCredential) => {
                 const user = userCredential.user;
                 dispatch({type: 'LOGIN', payload: user})
@@ -30,21 +48,36 @@ function LoginForm() {
             });
     }
 
+    const handleOnChange = (e) => {
+        setFormValues({
+            ...formValues,
+            [e.target.name]: e.target.value
+        })
+    }
+
     return (
         <FormContainer onSubmit={handleLogin}>
-            <InputField
-                id="loginEmail"
-                type="email"
-                placeholder="E-mail"
-                value={email}
-                onChange={e => setEmail(e.target.value)}/>
-            <InputField
-                id="loginPassword"
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={e => setPassword(e.target.value)} />
-            <Button type="submit" className="btn btn-primary">Submit</Button>
+            {
+                inputs.map((input) => (
+                    <InputField
+                        key={input.id} {...input} value={formValues[input.name]} onChange={handleOnChange}
+                    />
+                ))
+            }
+
+            {/*<InputField*/}
+            {/*    id="loginEmail"*/}
+            {/*    type="email"*/}
+            {/*    placeholder="E-mail"*/}
+            {/*    value={formValues.email}*/}
+            {/*    onChange={e => setFormValues(e.target.value)}/>*/}
+            {/*<InputField*/}
+            {/*    id="loginPassword"*/}
+            {/*    type="password"*/}
+            {/*    placeholder="Password"*/}
+            {/*    value={formValues.password}*/}
+            {/*    onChange={e => setFormValues(e.target.value)} />*/}
+            <Button type="submit">Submit</Button>
             {inputError && <div className="alert alert-danger">Login details are incorrect</div>}
         </FormContainer>
     );
