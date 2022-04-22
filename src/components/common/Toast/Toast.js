@@ -1,9 +1,9 @@
 import React from 'react';
-import {ToastContainer, ToastMessage} from "./Toast.styles";
+import {ToastContainer, ToastMessage, ToastWrapper} from "./Toast.styles";
 
 function Toast({toastList}) {
     return (
-        <div>
+        <ToastWrapper>
             {
                 toastList.map(toast => {
                     return (
@@ -15,7 +15,7 @@ function Toast({toastList}) {
                     )
                 })
             }
-        </div>
+        </ToastWrapper>
     );
 }
 

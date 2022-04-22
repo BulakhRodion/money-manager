@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
 export const ToastWrapper = styled.div `
-  
-`
-
-export const ToastContainer = styled.div`
   position: fixed;
   bottom: 10px;
   right: 10px;
   z-index: 9999;
+`
+
+export const ToastContainer = styled.div`
   display: flex;
   width: 300px;
   height: 60px;
@@ -16,6 +15,7 @@ export const ToastContainer = styled.div`
   align-items: center;
   justify-content: center;
   padding: 0.5rem;
+  margin-bottom: 0.5rem;
   background-color: #f3f3f3;
   border-radius: 0.5rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
