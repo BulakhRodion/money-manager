@@ -1,6 +1,6 @@
 import {createGlobalStyle} from "styled-components";
 
-export const GlobalStyles = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
@@ -10,4 +10,17 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
+  nav li a {
+    display: flex;
+    align-items: center;
+    padding-left: 52px;
+  }
+  nav li a.active  {
+    color: #000;
+  }
+  body, html {
+    min-height: 100vh;
+  }
 `
+
+export default GlobalStyles;

@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const DashboardContainer = styled.div`
+export const CardsContainer = styled.div`
   display: flex;
   width: calc(100% - 300px);
   margin-left: auto;

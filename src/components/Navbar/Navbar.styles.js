@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const NavbarContainer = styled.nav`
+  position: fixed;
+  height: 100vh;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;

@@ -32,8 +32,6 @@ function LoginForm() {
                 const user = userCredential.user;
                 dispatch({type: 'LOGIN', payload: user})
                 navigateUser('/')
-                showToast('success', list, setList, propsContainer, "Successfully logged in")
-                // TODO: MOVE TOAST TO DASHBOARD
             })
             .catch((error) => {
                 console.log(error);

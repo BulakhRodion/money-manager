@@ -8,6 +8,9 @@ export const WelcomeUI = styled.div`
   height: 100vh;
   width: 100%;
   background-color: #f5f5f5;
+  nav {
+    display: none;
+  }
 `;
 
 export const WelcomeTitle = styled.h1`

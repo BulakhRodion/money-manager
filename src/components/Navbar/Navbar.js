@@ -15,9 +15,7 @@ function Navbar() {
             <NavbarList>
                 {NavItems.map(item => {
                     return (
-                        <NavItem key={item.id} porps={item}>
-                            {item.name}
-                        </NavItem>
+                        <NavItem key={item.id} details={item}/>
                     )
                 })}
             </NavbarList>

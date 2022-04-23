@@ -42,21 +42,21 @@ export const NAVIGATION_ITEMS = [
         id: 'myCards',
         name: 'My Cards',
         isActive: false,
-        path: '/cards',
+        path: 'cards',
     },{
         id: 'saving',
         name: 'Saving',
         isActive: false,
-        path: '/saving',
+        path: 'saving',
     },{
         id: 'transactions',
         name: 'Transaction',
         isActive: false,
-        path: '/transactions',
+        path: 'transactions',
     },{
         id: 'settings',
         name: 'Settings',
         isActive: false,
-        path: '/settings'
+        path: 'settings'
     }
 ];

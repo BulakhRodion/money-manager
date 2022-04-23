@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const DashboardContainer = styled.div`
+export const SavingContainer = styled.div`
   display: flex;
   width: calc(100% - 300px);
   margin-left: auto;
