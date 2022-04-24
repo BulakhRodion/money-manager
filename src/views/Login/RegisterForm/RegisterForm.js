@@ -4,7 +4,7 @@ import { auth } from '../../../firebase';
 import { useNavigate } from 'react-router-dom';
 import {FormContainer} from "./RegisterForm.styles";
 import InputField from "@components/common/InputField/InputField";
-import {AuthContext} from "../../../context/AuthContext";
+import {AuthContext} from "../../../context/AuthContext/AuthContext";
 import Button from "@components/common/Button/Button";
 import {REGISTER_INPUTS} from "../../../utils/helpers/constants";
 import {showToast} from "../../../utils/helpers/showToast";

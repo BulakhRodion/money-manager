@@ -3,7 +3,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../../firebase';
 import {FormContainer} from "./LoginForm.styles";
 import { useNavigate } from 'react-router-dom';
-import {AuthContext} from "../../../context/AuthContext";
+import {AuthContext} from "../../../context/AuthContext/AuthContext";
 import InputField from "@components/common/InputField/InputField";
 import Button from "@components/common/Button/Button";
 import {LOGIN_INPUTS} from "../../../utils/helpers/constants";

@@ -33,3 +33,10 @@ export const NavIconWrapper = styled.div`
   align-items: center;
   margin-right: 1rem;
 `;
+
+export const NavDivider = styled.div`
+  width: 100px;
+  height: 1px;
+  background-color: #8D8D8D;
+  margin: 1rem 0;
+`;

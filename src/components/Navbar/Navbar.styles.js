@@ -8,7 +8,6 @@ export const NavbarContainer = styled.nav`
   flex-direction: column;
   align-items: center;
   width: 300px;
-  height: 100%;
   padding: 1rem 0;
   background-color: #f1f1f1;
 `;
