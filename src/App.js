@@ -10,6 +10,7 @@ import Settings from "./views/Settings/Settings";
 import Navbar from "./components/Navbar/Navbar";
 import GlobalStyles from "./Global.styles";
 import {ThemeContext} from "./context/ThemeContext/ThemeContext";
+import Error from "./views/ErrorPage/Error";
 
 function App() {
 
@@ -44,6 +45,7 @@ function App() {
                         <Route path="saving" element={<RequireAuth><Saving/></RequireAuth>}/>
                         <Route path="transactions" element={<RequireAuth><Transactions/></RequireAuth>}/>
                         <Route path="settings" element={<RequireAuth><Settings/></RequireAuth>}/>
+                        <Route path="*" element={<Error/>}/>
                     </Route>
                 </Routes>
                 <GlobalStyles/>
