@@ -5,12 +5,12 @@ import {AuthContext} from "./context/AuthContext/AuthContext";
 import {useContext} from "react";
 import Cards from "./views/Cards/Cards";
 import Saving from "./views/Saving/Saving";
-import Transactions from "./views/Transaction/Transactions";
 import Settings from "./views/Settings/Settings";
 import Navbar from "./components/Navbar/Navbar";
 import GlobalStyles from "./Global.styles";
 import {ThemeContext} from "./context/ThemeContext/ThemeContext";
 import Error from "./views/ErrorPage/Error";
+import Exchange from "./views/Transaction/Exchange";
 
 function App() {
 
@@ -43,7 +43,7 @@ function App() {
                         <Route index element={<RequireAuth><Dashboard/></RequireAuth>}/>
                         <Route path="cards" element={<RequireAuth><Cards/></RequireAuth>}/>
                         <Route path="saving" element={<RequireAuth><Saving/></RequireAuth>}/>
-                        <Route path="transactions" element={<RequireAuth><Transactions/></RequireAuth>}/>
+                        <Route path="exchange" element={<RequireAuth><Exchange/></RequireAuth>}/>
                         <Route path="settings" element={<RequireAuth><Settings/></RequireAuth>}/>
                         <Route path="*" element={<Error/>}/>
                     </Route>

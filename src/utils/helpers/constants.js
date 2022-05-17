@@ -38,25 +38,27 @@ export const NAVIGATION_ITEMS = [
         name: 'Dashboard',
         isActive: true,
         path: '/',
-    },{
+    }, {
         id: 'myCards',
         name: 'My Cards',
         isActive: false,
         path: 'cards',
-    },{
+    }, {
         id: 'saving',
         name: 'Saving',
         isActive: false,
         path: 'saving',
-    },{
-        id: 'transactions',
-        name: 'Transaction',
+    }, {
+        id: 'exchange',
+        name: 'Exchange',
         isActive: false,
-        path: 'transactions',
-    },{
+        path: 'exchange',
+    }, {
         id: 'settings',
         name: 'Settings',
         isActive: false,
         path: 'settings'
     }
 ];
+
+export const RATES_LIST = 'UAH,RUB,EUR,GBP,PLN,CZK,CNY,CAD,JPY,USD';

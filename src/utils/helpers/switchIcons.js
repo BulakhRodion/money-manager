@@ -16,7 +16,7 @@ export const switchIcon = icon => {
             return <IconCard/>;
         case 'settings':
             return <IconSettings/>;
-        case 'transactions':
+        case 'exchange':
             return <IconTransaction/>;
         case 'dark':
             return <IconNight/>;
