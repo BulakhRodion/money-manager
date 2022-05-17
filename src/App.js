@@ -10,7 +10,7 @@ import Navbar from "./components/Navbar/Navbar";
 import GlobalStyles from "./Global.styles";
 import {ThemeContext} from "./context/ThemeContext/ThemeContext";
 import Error from "./views/ErrorPage/Error";
-import Exchange from "./views/Transaction/Exchange";
+import Exchange from "./views/Exchange/Exchange";
 
 function App() {
 
