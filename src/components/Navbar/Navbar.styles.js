@@ -9,7 +9,7 @@ export const NavbarContainer = styled.nav`
   align-items: center;
   width: 300px;
   padding: 1rem 0;
-  background-color: #f1f1f1;
+  background-color: ${(props) => props.theme.backgroundColors.navbar};
 `;
 
 export const NavbarList = styled.ul`

@@ -7,10 +7,11 @@ import Cards from "./views/Cards/Cards";
 import Saving from "./views/Saving/Saving";
 import Settings from "./views/Settings/Settings";
 import Navbar from "./components/Navbar/Navbar";
-import GlobalStyles from "./Global.styles";
+import {GlobalStyles, darkTheme, lightTheme} from "./Global.styles";
 import {ThemeContext} from "./context/ThemeContext/ThemeContext";
 import Error from "./views/ErrorPage/Error";
 import Exchange from "./views/Exchange/Exchange";
+import {ThemeProvider} from "styled-components";
 
 function App() {
 
@@ -34,23 +35,25 @@ function App() {
     };
 
     return (
-        <div className="App" id={darkMode ? "dark" : "light"}>
-            <BrowserRouter>
-                {currentUser && <Navbar/>}
-                <Routes>
-                    <Route path="/">
-                        <Route path="login" element={<RequireNoAuth><Welcome/></RequireNoAuth>}/>
-                        <Route index element={<RequireAuth><Dashboard/></RequireAuth>}/>
-                        <Route path="cards" element={<RequireAuth><Cards/></RequireAuth>}/>
-                        <Route path="saving" element={<RequireAuth><Saving/></RequireAuth>}/>
-                        <Route path="exchange" element={<RequireAuth><Exchange/></RequireAuth>}/>
-                        <Route path="settings" element={<RequireAuth><Settings/></RequireAuth>}/>
-                        <Route path="*" element={<Error/>}/>
-                    </Route>
-                </Routes>
-                <GlobalStyles/>
-            </BrowserRouter>
-        </div>
+        <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+            <div className="App">
+                <BrowserRouter>
+                    {currentUser && <Navbar/>}
+                    <Routes>
+                        <Route path="/">
+                            <Route path="login" element={<RequireNoAuth><Welcome/></RequireNoAuth>}/>
+                            <Route index element={<RequireAuth><Dashboard/></RequireAuth>}/>
+                            <Route path="cards" element={<RequireAuth><Cards/></RequireAuth>}/>
+                            <Route path="saving" element={<RequireAuth><Saving/></RequireAuth>}/>
+                            <Route path="exchange" element={<RequireAuth><Exchange/></RequireAuth>}/>
+                            <Route path="settings" element={<RequireAuth><Settings/></RequireAuth>}/>
+                            <Route path="*" element={<Error/>}/>
+                        </Route>
+                    </Routes>
+                    <GlobalStyles/>
+                </BrowserRouter>
+            </div>
+        </ThemeProvider>
     );
 }
 

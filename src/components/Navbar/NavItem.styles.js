@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const NavItemStyles = styled.li`
   display: flex;
   align-items: center;
-  color: #8D8D8D;
+  color: ${props => props.theme.colors.navPrimary};
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -13,17 +13,17 @@ export const NavItemStyles = styled.li`
   transition: all 0.3s ease;
   cursor: pointer;
   &:hover {
-    color: #000;
-    border-left: 5px solid #000;
+    color: ${(props) => props.theme.colors.navHover};
+    border-left: 5px solid ${props => props.theme.colors.navHover};
   }
   svg {
-    fill: #000;
+    fill: ${(props) => props.theme.fill};
   }
   a {
     text-decoration: none;
-    color: #8D8D8D;
+    color: ${props => props.theme.colors.navPrimary};
     &:hover {
-      color: #000;
+      color: ${props => props.theme.colors.navHover};
     }
   }
 `;

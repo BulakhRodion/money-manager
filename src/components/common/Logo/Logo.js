@@ -1,15 +1,23 @@
 import React from 'react';
-import { IconWallet } from '@assets/icons/icons.js';
-import {LogoImg, LogoLink} from "./Logo.styles";
+import {LogoLink} from "./Logo.styles";
+import {ThemeProvider} from "styled-components";
+import {useContext} from "react";
+import {ThemeContext} from "../../../context/ThemeContext/ThemeContext";
+import {darkTheme, lightTheme} from "../../../Global.styles";
+import {switchIcon} from "../../../utils/helpers/switchIcons";
 
 function Logo() {
+    const {darkMode} = useContext(ThemeContext);
+
     return (
-        <div>
-            <LogoLink href="/">
-                <LogoImg src={IconWallet} alt="icon" />
-                Wallet
-            </LogoLink>
-        </div>
+        <ThemeProvider theme={darkMode? darkTheme : lightTheme}>
+            <div>
+                <LogoLink href="/">
+                    {switchIcon('logo')}
+                    Wallet
+                </LogoLink>
+            </div>
+        </ThemeProvider>
     );
 }
 
