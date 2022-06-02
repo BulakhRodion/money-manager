@@ -1,46 +1,23 @@
 import {
     DashboardTitle,
     DashboardContainer,
-    AmountContainer,
-    AmountItem,
-    ContentContainer,
-    AmountItemTitle
+    ContentContainerLeft, ContentContainerRight,
 } from "./Dashboard.styles";
-
-// import Popup from "../../components/common/Popup/Popup";
+import Chart from "./components/Chart/Chart";
+import Amount from "./components/AmountCard/Amount";
 
 function Dashboard() {
-    // const [visibility, setVisibility] = useState(false);
-    //
-    // const popupCloseHandler = (e) => {
-    //     setVisibility(e);
-    // };
+
 
     return (
         <DashboardContainer>
-            <ContentContainer>
+            <ContentContainerLeft>
                 <DashboardTitle>Dashboard</DashboardTitle>
-                <AmountContainer>
-                    <AmountItem>
-                        Available amount
-                        <AmountItemTitle>
-                            $6,550
-                        </AmountItemTitle>
-                    </AmountItem>
-                    <AmountItem>
-                        Card balance
-                        <AmountItemTitle>
-                            $4,208
-                        </AmountItemTitle>
-                    </AmountItem>
-                    <AmountItem>
-                        Credit limit
-                        <AmountItemTitle>
-                            $20,000
-                        </AmountItemTitle>
-                    </AmountItem>
-                </AmountContainer>
-            </ContentContainer>
+                <Amount />
+            </ContentContainerLeft>
+            <ContentContainerRight>
+                <Chart />
+            </ContentContainerRight>
         </DashboardContainer>
     );
 }
