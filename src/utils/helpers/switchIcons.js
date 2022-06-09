@@ -7,6 +7,7 @@ import {ReactComponent as IconNight} from "@assets/icons/night-svgrepo-com.svg";
 import {ReactComponent as IconDay} from "@assets/icons/day-of-sun-svgrepo-com.svg";
 import {ReactComponent as IconLogo} from "@assets/icons/wallet-svgrepo-com.svg";
 
+
 export const switchIcon = icon => {
     switch(icon) {
         case 'dashboard':

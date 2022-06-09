@@ -13,8 +13,15 @@ function Chart() {
 						<stop offset="75%" stopColor="#2451B7" stopOpacity={0.05}/>
 					</linearGradient>
 				</defs>
+				<defs>
+					<linearGradient id="colorUv2" x1="0" y1="0" x2="0" y2="1">
+						<stop offset="0%" stopColor="#e63946" stopOpacity={0.4}/>
+						<stop offset="75%" stopColor="#e63946" stopOpacity={0.05}/>
+					</linearGradient>
+				</defs>
 
-				<Area dataKey="value" stroke="#2451B7" fill="url(#colorUv)"/>
+				<Area dataKey="value" stroke="#e63946" fill="url(#colorUv2)"/>
+				<Area dataKey="value2" stroke="#2451B7" fill="url(#colorUv)"/>
 				<XAxis dataKey="date" axisLine={false} tickLine={false} />
 				<YAxis dataKey="value" axisLine={false} tickLine={false} tickCount={6} tickFormatter={number => `$${number.toFixed(2)}`}/>
 				<Tooltip />

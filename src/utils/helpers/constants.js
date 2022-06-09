@@ -68,45 +68,54 @@ export const CHART_VALUES = [
         id: '111',
         date: 'Jan 2022',
         value: 1 + Math.random(),
+        value2: 1 + Math.random(),
     },
     {
         id: '222',
         date: 'Feb 2022',
         value: 1 + Math.random(),
+        value2: 1 + Math.random(),
     },
     {
         id: '333',
         date: 'Mar 2022',
         value: 1 + Math.random(),
+        value2: 1 + Math.random(),
     },
     {
         id: '444',
         date: 'Apr 2022',
         value: 1 + Math.random(),
+        value2: 1 + Math.random(),
     },
     {
         id: '555',
         date: 'May 2022',
         value: 1 + Math.random(),
+        value2: 1 + Math.random(),
     },
     {
         id: '666',
         date: 'Jun 2022',
         value: 1 + Math.random(),
+        value2: 1 + Math.random(),
     },
     {
         id: '777',
         date: 'Jul 2022',
         value: 1 + Math.random(),
+        value2: 1 + Math.random(),
     },
     {
         id: '888',
         date: 'Aug 2022',
         value: 1 + Math.random(),
+        value2: 1 + Math.random(),
     },
     {
         id: '999',
         date: 'Sep 2022',
         value: 1 + Math.random(),
+        value2: 1 + Math.random(),
     }
 ]

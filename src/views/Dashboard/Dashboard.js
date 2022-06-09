@@ -5,6 +5,7 @@ import {
 } from "./Dashboard.styles";
 import Chart from "./components/Chart/Chart";
 import Amount from "./components/AmountCard/Amount";
+import SavingsStyles from "./components/Savings/Savings";
 
 function Dashboard() {
 
@@ -14,6 +15,7 @@ function Dashboard() {
             <ContentContainerLeft>
                 <DashboardTitle>Dashboard</DashboardTitle>
                 <Amount />
+                <SavingsStyles />
             </ContentContainerLeft>
             <ContentContainerRight>
                 <Chart />

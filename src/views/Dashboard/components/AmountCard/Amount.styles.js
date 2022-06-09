@@ -3,8 +3,9 @@ import styled from "styled-components";
 export const AmountContainer = styled.ul`
   display: flex;
   width: 450px;
-  height: 120px;
+  height: 92px;
   border-radius: 10px;
+  margin-bottom: 20px;
   background-color: ${props => props.theme.backgroundColors.reverseBackground};
 `;
 
